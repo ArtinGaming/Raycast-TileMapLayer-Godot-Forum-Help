@@ -31,22 +31,10 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	
-	print(get_clicked_tile_power())	
+	print(check_one_way())	
 	
-func get_clicked_tile_powere():
-	if up_ray_cast.is_colliding():
-		var collider = up_ray_cast.get_collider()
 		
-		var tile_coords = up_ray_cast.get_collider().local_to_map(to_local(up_ray_cast.get_collision_point()))
-		var data = collider.get_cell_tile_data(tile_coords)
-	
-		if data:
-			return data.get_custom_data("one_way")
-			print(data)
-			
-		print(data)
-		
-func get_clicked_tile_power():
+func check_one_way():
 	if up_ray_cast.is_colliding():
 		var collider = up_ray_cast.get_collider()
 		
