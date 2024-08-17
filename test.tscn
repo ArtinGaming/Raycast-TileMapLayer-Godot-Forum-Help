@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=4 uid="uid://pnt8a6hy6jai"]
+
+[ext_resource type="PackedScene" uid="uid://cy7kdur1o1v2r" path="res://character_body_2d.tscn" id="1_n6bef"]
+[ext_resource type="Texture2D" uid="uid://7mipdksqi0bc" path="res://icon.svg" id="2_77bxb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w4vfv"]
+texture = ExtResource("2_77bxb")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/modulate = Color(0.392325, 0.392325, 0.392325, 1)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+0:0/0/custom_data_0 = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dloq2"]
+resource_name = "normal"
+texture = ExtResource("2_77bxb")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_tmdvr"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "one_way"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_w4vfv")
+sources/1 = SubResource("TileSetAtlasSource_dloq2")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_n6bef")]
+position = Vector2(206, 427)
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
+rotation = -0.00389191
+tile_map_data = PackedByteArray("AAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_tmdvr")
